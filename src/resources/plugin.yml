@@ -1,0 +1,93 @@
+name: Esclandia
+author: Brent Lapierre
+website: github.com/brentlapierre
+main: tv.sushidog.esclandia.Esclandia
+version: 1.2
+api-version: 1.17
+
+commands:
+  coins:
+    description: View your coins balance and give coins
+    usage: /coins help
+    permission: esclandia.coins
+    aliases: [bal, balance, coin, wallet]
+
+  escacola:
+    description: Gives a bottle of ESCa Cola to the player
+    usage: /escacola <player>
+    permission: esclandia.escacola
+    aliases: [esc, esca, cola]
+
+  home:
+    description: Teleport and manage your home warp
+    usage: /home help
+    permission: esclandia.home
+    aliases: [homes]
+
+  shop:
+    description: Create and manage shops
+    usage: /shop
+    permission: esclandia.shop
+    aliases: [shops]
+
+  warp:
+    description: Global and player-specific warps
+    usage: /warp help
+    permission: esclandia.warp
+    aliases: [warps]
+
+permissions:
+  coins.*:
+    description: Gives access to all coins commands
+    default: op
+    children:
+      coins.add: true
+      coins.give: true
+      coins.take: true
+  coins.add:
+    description: Add coins to a players coins balance
+    default: op
+  coins.give:
+    description: Give coins to another player
+    default: true
+  coins.take:
+    description: Take coins from a players coins balance
+    default: op
+
+  escacola:
+    description: Gives a bottle of ESCa Cola to the player
+    default: op
+
+  home.*:
+    description: Gives access to all home commands
+    default: true
+    children:
+      home.set: true
+      home.delete: true
+  home.set:
+    description: Sets the home warp
+    default: true
+  home.delete:
+    description: Deletes the home warp
+    default: true
+
+  shop.*:
+    description: Gives access to all shop commands
+    default: true
+
+  warp.*:
+    description: Gives access to all warp commands
+    default: op
+    children:
+      warp.add: true
+      warp.delete: true
+      warp.list: true
+  warp.add:
+    description: Creates a warp
+    default: op
+  warp.delete:
+    description: Deletes a warp
+    default: op
+  warp.list:
+    description: View the list of available warps
+    default: true
