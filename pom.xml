@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>tv.sushidog</groupId>
+  <artifactId>Esclandia</artifactId>
+  <version>1.2</version>
+  <name>Esclandia</name>
+  <description>The official plugin of the ESClandia Minecraft server</description>
+  <build>
+  	<resources>
+      <resource>
+        <directory>${basedir}/src/resources</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>*</include>
+        </includes>
+      </resource>
+    </resources>
+
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>16</release>
+        </configuration>
+      </plugin>
+
+	  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.4</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <createDependencyReducedPom>false</createDependencyReducedPom>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <repositories>
+    <!-- Spigot -->
+    <repository>
+      <id>spigot-repo</id>
+      <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+    </repository>
+
+    <!--  AnvilGUI -->
+    <repository>
+      <id>codemc-snapshots</id>
+      <url>https://repo.codemc.io/repository/maven-snapshots/</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <!-- Spigot -->
+    <dependency>
+      <groupId>org.spigotmc</groupId>
+      <artifactId>spigot-api</artifactId>
+      <version>1.17-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!--  AnvilGUI -->
+    <dependency>
+      <groupId>net.wesjd</groupId>
+      <artifactId>anvilgui</artifactId>
+      <version>1.5.1-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+
+	<dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-shade-plugin</artifactId>
+      <version>3.2.4</version>
+      <type>maven-plugin</type>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+</project>
