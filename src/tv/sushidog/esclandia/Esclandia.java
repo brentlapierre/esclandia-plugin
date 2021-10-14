@@ -22,6 +22,7 @@ public class Esclandia extends JavaPlugin implements Listener {
 	private static Esclandia plugin;
 	public Shop shop;
 	public EscaCola escaCola;
+	public Crops crops;
 
 	@Override
     public void onEnable () {
@@ -29,10 +30,12 @@ public class Esclandia extends JavaPlugin implements Listener {
 
 		this.shop = new Shop();
 		this.escaCola = new EscaCola();
+		this.crops = new Crops();
 
 		this.getServer().getPluginManager().registerEvents(this, this);
 		this.getServer().getPluginManager().registerEvents(this.shop, this);
 		this.getServer().getPluginManager().registerEvents(this.escaCola, this);
+		this.getServer().getPluginManager().registerEvents(this.crops, this);
 
 		this.getCommand("coins").setExecutor(new cmd_coins());
 		this.getCommand("escacola").setExecutor(new cmd_escacola());
